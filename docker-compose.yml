@@ -23,15 +23,12 @@ services:
             - ./php/fpm/:/usr/local/etc/php/conf.d/
             - ./www:/var/www/html
     php-cli:
-        build: ./build/php-cli
+        build:
+            context: ./
+            dockerfile: ./build/php-cli/Dockerfile
         volumes:
             - ./php/cli/:/usr/local/etc/php/conf.d/
             - ./www:/var/www/html
-    composer:
-        image: composer
-        volumes:
-            - ./www:/app
-        command: install
     adminer:
         image: adminer
         ports:
