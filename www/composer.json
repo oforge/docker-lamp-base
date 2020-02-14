@@ -1,0 +1,5 @@
+{
+    "name": "oforge/docker-lemp",
+    "description": "The awesome oforge composer file for future projects with docker",
+    "require": {}
+}
