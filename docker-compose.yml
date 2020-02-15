@@ -1,11 +1,10 @@
 version: '3'
 services:
     web:
-        image: httpd:alpine
-        #command: exec /usr/sbin/httpd -D FOREGROUND -f /usr/local/apache2/conf/httpd.conf
+        build: ./build/web
         volumes:
-            - ./web/default.conf:/usr/local/apache2/conf/httpd.conf
-            - ./web/ssl:/etc/ssl
+            - ./build/web/default.conf:/usr/local/apache2/conf/httpd.conf
+            - ./build/web/ssl:/etc/ssl
             - ./www:/var/www/html
         ports:
             - ${HTTP_PORT}:80
@@ -20,14 +19,10 @@ services:
         build: ./build/php-fpm
         restart: always
         volumes:
-            - ./php/fpm/:/usr/local/etc/php/conf.d/
             - ./www:/var/www/html
     php-cli:
-        build:
-            context: ./
-            dockerfile: ./build/php-cli/Dockerfile
+        build: ./build/php-cli
         volumes:
-            - ./php/cli/:/usr/local/etc/php/conf.d/
             - ./www:/var/www/html
     adminer:
         image: adminer
