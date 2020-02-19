@@ -1,7 +1,12 @@
 version: '3'
 services:
     web:
-        build: ./build/web
+        build:
+            context: ./
+            dockerfile: ./build/web/Dockerfile
+            args:
+                USERID: ${USERID}
+                GROUPID: ${GROUPID}
         volumes:
             - ./build/web/default.conf:/usr/local/apache2/conf/httpd.conf
             - ./build/web/ssl:/etc/ssl
@@ -16,14 +21,30 @@ services:
             - php-fpm
             - mysql
     php-fpm:
-        build: ./build/php-fpm
+        build:
+            context: ./
+            dockerfile: ./build/php-fpm/Dockerfile
+            args:
+                USERID: ${USERID}
+                GROUPID: ${GROUPID}
         restart: always
         volumes:
             - ./www:/var/www/html
+        environment:
+            - HOST_NAME=${HOSTNAME}
     php-cli:
-        build: ./build/php-cli
+        build:
+            context: ./
+            dockerfile: ./build/php-cli/Dockerfile
+            args:
+                USERID: ${USERID}
+                GROUPID: ${GROUPID}
         volumes:
             - ./www:/var/www/html
+        environment:
+            - HOST_NAME=${HOSTNAME}
+        restart: on-failure
+        tty: true
     adminer:
         image: adminer
         ports:
