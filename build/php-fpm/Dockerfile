@@ -11,4 +11,5 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
 COPY ./build/php-fpm/conf/20-xdebug.ini /usr/local/etc/php/conf.d/
 COPY ./build/php-fpm/conf/php.ini /usr/local/etc/php/conf.d/
 WORKDIR /var/www/html
+USER www-data
 #COPY ./conf/20-pdo_mysql.ini /usr/local/etc/php/conf.d/

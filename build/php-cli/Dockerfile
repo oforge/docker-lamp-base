@@ -13,3 +13,4 @@ COPY ./build/php-fpm/conf/php.ini /usr/local/etc/php/conf.d/
 #COPY ./conf/20-pdo_mysql.ini /usr/local/etc/php/conf.d/
 WORKDIR /var/www/html
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+USER www-data
