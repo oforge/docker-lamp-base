@@ -4,3 +4,4 @@ composer/
 .idea
 node_modules
 www
+!www/.gitkeep
