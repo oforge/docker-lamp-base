@@ -15,7 +15,7 @@ Also it serves as a share between all applications.
 - Install docker and docker-compose
 - Go into the scripts folder and run `sh create-env.sh`. This creates your .env file with additional data.
 - Build everything inside the root folder with `docker-compose build`
-- Start it with `docker-compose up`
+- Start it with `docker-compose up`. Use the parameter ` -d` to run ist in background.
 - Stop with `docker-compose down`
 - To check the running docker container use `docker ps`. When there are docker container running, 
 you will see a list that shows information about every container. 
