@@ -1,4 +1,6 @@
 .env
+composer/
+!composer/.gitkeep
 .idea
 node_modules
 www
