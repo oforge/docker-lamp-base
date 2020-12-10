@@ -8,12 +8,12 @@ ENV GROUPID "$GROUPID"
 ENV HOSTNAME "$HOSTNAME"
 ENV ENVIRONMENT local
 
-RUN apk add --no-cache \
+RUN apk add --no-cache git \
   php7 php7-mysqli php7-pdo_mysql php7-ctype php7-json php7-gd php7-curl php7-pgsql php7-sqlite3 php7-bcmath php7-mbstring php7-mcrypt php7-zip  \
   php7-dba php7-session php7-zlib php7-xml php7-xmlreader php7-openssl php7-dom php7-phar php7-intl php7-fileinfo  php7-xmlwriter php7-simplexml \
   php7-tokenizer php7-pecl-imagick php7-pecl-xdebug apache2 apache2-utils php7-apache2 curl shadow                                               \
   && ln -sf /dev/stderr /var/log/apache2/error.log                                                                                               \
-  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer                                              \
+  && curl -sS https://getcomposer.org/installer | php -- --version=1.10.19 --install-dir=/usr/bin --filename=composer                                              \
   && chmod +x /usr/bin/composer                                                                                                                  \
   && addgroup -g ${GROUPID} appuser                                                                                                              \
   && adduser -h /app/ -H -D -G appuser -u ${USERID} appuser                                                                                      \
