@@ -2,7 +2,7 @@
 
 printf "\nCreating .env file from sample.env."
 
-cd .. && cp sample.env .env
+cp scripts/install/sample.env .env
 
 if [ "$?" = "0" ]; then
   printf "\n.env file created. Addind HOSTNAME, UID and GID from current user to .env file."
