@@ -1,2 +1,3 @@
 #!/bin/bash
-docker exec -it web php bin/console oforge:service:run template.management:buildAll
+. .env
+docker exec -it ${COMPOSE_PROJECT_NAME}_server php bin/console oforge:service:run template.management:buildAll
