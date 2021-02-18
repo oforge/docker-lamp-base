@@ -1,7 +1,7 @@
 .env
+.idea
 composer/
 !composer/.gitkeep
-.idea
 node_modules
 www
 !www/.gitkeep
